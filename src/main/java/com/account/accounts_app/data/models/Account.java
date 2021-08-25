@@ -20,7 +20,7 @@ public class Account {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String accountClientName() {
+    public String getAccountClientName() {
         return accountClientName;
     }
     public void setAccountClientName(String accountClientName) {
@@ -49,7 +49,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", accountName='" + accountClientName + '\'' +
+                ", accountName='" + accountClientName +
                 ", accountNumber='" + accountNumber +
                 ", accountBalance='" + accountBalance +
                 ", accountState='" + accountState +
