@@ -7,10 +7,10 @@ public class AccountResponse {
     public AccountResponse(String message) {
         this.message = message;
     }
-    public void setMessage(String message) {
+    public void setAccount(String message) {
         this.message = message;
     }
-    public String getMessage() {
+    public String getAccount() {
         return message;
     }
 }
