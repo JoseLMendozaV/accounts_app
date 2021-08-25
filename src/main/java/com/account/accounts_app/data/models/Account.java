@@ -50,9 +50,9 @@ public class Account {
         return "Account{" +
                 "id=" + id +
                 ", accountName='" + accountClientName + '\'' +
-                ", accountNumber='" + accountNumber + '\'' +
-                ", accountBalance='" + accountBalance + '\'' +
-                ", accountState='" + accountState + '\'' +
+                ", accountNumber='" + accountNumber +
+                ", accountBalance='" + accountBalance +
+                ", accountState='" + accountState +
                 '}';
     }
 
