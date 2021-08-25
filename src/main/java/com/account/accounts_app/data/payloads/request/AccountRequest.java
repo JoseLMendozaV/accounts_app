@@ -14,9 +14,6 @@ public class AccountRequest {
     @NotBlank
     @NotNull
     private double accountBalance;
-    @NotBlank
-    @NotNull
-    private Integer accountState;
 
     public String getAccountClientName() {
         return accountClientName;
@@ -36,11 +33,4 @@ public class AccountRequest {
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
-    public Integer getAccountState() {
-        return accountState;
-    }
-    public void setAccountState(Integer accountState) {
-        this.accountState = accountState;
-    }
-
 }

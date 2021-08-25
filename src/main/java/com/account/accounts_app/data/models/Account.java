@@ -1,9 +1,15 @@
 package com.account.accounts_app.data.models;
 
+import org.hibernate.annotations.SQLDelete;
+
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "account")
+@SQLDelete(sql = "UPDATE account SET accountState = 1 WHERE id=?")
+
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,7 +17,7 @@ public class Account {
     private String accountClientName;
     private Integer accountNumber;
     private double accountBalance;
-    private Integer accountState;
+    private byte accountState = 0;
 
     public Account(){}
     public Integer getId() {
@@ -38,10 +44,12 @@ public class Account {
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
-    public Integer getAccountState() {
+
+    public byte getAccountState() {
         return accountState;
     }
-    public void setAccountState(Integer accountState) {
+
+    public void setAccountState(byte accountState) {
         this.accountState = accountState;
     }
 

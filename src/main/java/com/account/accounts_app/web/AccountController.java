@@ -4,6 +4,7 @@ import com.account.accounts_app.data.models.Account;
 import com.account.accounts_app.data.payloads.request.AccountRequest;
 import com.account.accounts_app.data.payloads.response.AccountResponse;
 import com.account.accounts_app.service.AccountService;
+import com.account.accounts_app.service.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import java.util.Optional;
 public class AccountController {
     @Autowired
     AccountService accountService;
+    AccountServiceImpl accountServiceImpl;
 
     @GetMapping("")
     public ResponseEntity<List<Account>> getAllAccounts() {
@@ -45,8 +47,8 @@ public class AccountController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteAccount (@PathVariable("id") Integer id) {
-        accountService.deleteAccount(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public void deleteAccount(@PathVariable Integer id) {
+        accountServiceImpl.deleteAccount(id);
     }
+
 }

@@ -4,6 +4,7 @@ import com.account.accounts_app.data.models.Account;
 import com.account.accounts_app.data.payloads.request.AccountRequest;
 import com.account.accounts_app.data.payloads.response.AccountResponse;
 import com.account.accounts_app.data.repository.AccountRepository;
+import com.account.accounts_app.data.repository.deleteInterface;
 import com.account.accounts_app.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     AccountRepository accountRepository;
+    deleteInterface deleteInterfaceModule;
 
     @Override
     public AccountResponse CreateAccount(AccountRequest accountRequest) {
@@ -23,7 +25,6 @@ public class AccountServiceImpl implements AccountService {
         newAccount.setAccountClientName(accountRequest.getAccountClientName());
         newAccount.setAccountNumber(accountRequest.getAccountNumber());
         newAccount.setAccountBalance(accountRequest.getAccountBalance());
-        newAccount.setAccountState(accountRequest.getAccountState());
         accountRepository.save(newAccount);
         return new AccountResponse("New Account created!!");
     }
@@ -50,11 +51,12 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findAll();
     }
 
-    @Override
-    public void deleteAccount(Integer accountId) throws ResourceNotFoundException {
-        if (accountRepository.getById(accountId).getId().equals(accountId)) {
-            accountRepository.deleteById(accountId);
-        }
-        else throw new ResourceNotFoundException("Account", "id", accountId);
+
+    public void deleteAccount(Integer accountId) {
+        deleteInterfaceModule.deleteById(accountId);
     }
+
+
+
+
 }
