@@ -35,10 +35,7 @@ public class AccountServiceImpl implements AccountService {
             throw new ResourceNotFoundException("Account", "id", accountId);
         }
         else
-            account.get().setAccountClientName(accountRequest.getAccountClientName());
-            account.get().setAccountNumber(accountRequest.getAccountNumber());
             account.get().setAccountBalance(accountRequest.getAccountBalance());
-            account.get().setAccountState(accountRequest.getAccountState());
             accountRepository.save(account.get());
             return account;
     }
