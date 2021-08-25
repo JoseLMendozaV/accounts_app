@@ -13,32 +13,32 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/v1/accounts")
 public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @GetMapping("/all")
+    @GetMapping("")
     public ResponseEntity<List<Account>> getAllAccounts() {
         List<Account> accounts = accountService.getAllAccount();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
-    @GetMapping("find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Account> getAccountById (@PathVariable("id") Integer id) {
         Account account = accountService.getSingleAccount(id);
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<AccountResponse> addAccount (@RequestBody AccountRequest account) {
         AccountResponse newAccount = accountService.CreateAccount(account);
         return new ResponseEntity<>(newAccount, HttpStatus.CREATED);
     }
-    @PostMapping("/update/{id}")
+    @PostMapping("/{id}")
     public Optional<Account> updateAccount(@PathVariable Integer id, @RequestBody AccountRequest account) {
         return accountService.updateAccount(id, account);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAccount (@PathVariable("id") Integer id) {
         accountService.deleteAccount(id);
         return new ResponseEntity<>(HttpStatus.OK);
