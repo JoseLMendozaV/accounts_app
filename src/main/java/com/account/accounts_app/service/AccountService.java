@@ -11,8 +11,8 @@ import java.util.Optional;
 @Component
 public interface AccountService {
     AccountResponse CreateAccount(AccountRequest accountRequest);
-    Optional<Account> updateAccount (Integer accountid, AccountRequest accountRequest);
-    void deleteAccount(Integer accountid);
-    Account getSingleAccount(Integer accountid);
+    Optional<Account> updateAccount (Integer accountId, AccountRequest accountRequest);
+    void deleteAccount(Integer accountId);
+    Account getSingleAccount(Integer accountId);
     List<Account> getAllAccount();
 }
