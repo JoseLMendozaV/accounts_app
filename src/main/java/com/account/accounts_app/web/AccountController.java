@@ -33,7 +33,7 @@ public class AccountController {
         AccountResponse newAccount = accountService.CreateAccount(account);
         return new ResponseEntity<>(newAccount, HttpStatus.CREATED);
     }
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public Optional<Account> updateAccount(@PathVariable Integer id, @RequestBody AccountRequest account) {
         return accountService.updateAccount(id, account);
     }
