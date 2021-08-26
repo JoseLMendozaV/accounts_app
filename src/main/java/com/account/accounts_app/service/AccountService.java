@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface AccountService {
     AccountResponse CreateAccount(AccountRequest accountRequest);
     Optional<Account> updateAccount (Integer accountId, AccountRequest accountRequest);
-
+    void deleteAccount (Integer accountId);
     Account getSingleAccount(Integer accountId);
     List<Account> getAllAccount();
 }
