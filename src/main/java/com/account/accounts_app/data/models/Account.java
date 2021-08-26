@@ -1,14 +1,16 @@
 package com.account.accounts_app.data.models;
 
-import org.hibernate.annotations.SQLDelete;
 
+import org.hibernate.annotations.SQLDelete;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Data
 @Table(name = "account")
-@SQLDelete(sql = "UPDATE account SET accountState = 1 WHERE id=?")
+@SQLDelete(sql = "UPDATE `account_db`.`account` SET `account_state` = '1' WHERE (`id` = ?)")
 
 public class Account {
     @Id
@@ -17,7 +19,7 @@ public class Account {
     private String accountClientName;
     private Integer accountNumber;
     private double accountBalance;
-    private byte accountState = 0;
+    private boolean accountState;
 
     public Account(){}
     public Integer getId() {
@@ -45,13 +47,7 @@ public class Account {
         this.accountBalance = accountBalance;
     }
 
-    public byte getAccountState() {
-        return accountState;
-    }
 
-    public void setAccountState(byte accountState) {
-        this.accountState = accountState;
-    }
 
     @Override
     public String toString() {
