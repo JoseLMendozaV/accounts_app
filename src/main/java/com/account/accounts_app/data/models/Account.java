@@ -19,7 +19,7 @@ public class Account {
     private String accountClientName;
     private Integer accountNumber;
     private double accountBalance;
-    private boolean accountState;
+    private Byte accountState = 0;
 
     public Account(){}
     public Integer getId() {
